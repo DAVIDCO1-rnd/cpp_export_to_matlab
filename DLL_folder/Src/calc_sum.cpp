@@ -1,6 +1,7 @@
+#include "calc_sum.h"
 
-float my_func(float num1, float num2)
+int my_func(int num1, int num2)
 {
-	float res = num1 + num2;
+	int res = num1 + num2;
 	return res;
 }

@@ -1,4 +1,8 @@
 
-#define DLL_EXPORT __declspec(dllexport)
+#define EXPORT __declspec (dllexport)
 
-DLL_EXPORT float my_func(float num1, float num2);
+EXPORT int my_func(int num1, int num2);
+
+
+
+
