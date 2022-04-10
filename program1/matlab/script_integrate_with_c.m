@@ -2,19 +2,33 @@ clear;
 close all;
 clc;
 
-is_dll_loaded = libisloaded('Cpp_to_matlab_SHARED');
 
-if is_dll_loaded==true
-    unloadlibrary('Cpp_to_matlab_SHARED');
+shared_file_name_without_extension = 'Cpp_to_matlab_SHARED';
+
+if isunix
+    shared_file_name_without_extension = sprintf('lib%s',shared_file_name_without_extension);
+    shared_file_name_with_extension = sprintf('%s.so',shared_file_name_without_extension);
+elseif ispc
+    shared_file_name_with_extension = sprintf('%s.dll',shared_file_name_without_extension);
+else
+    error('Platform not supported')
 end
 
-[notfound, warnings] = loadlibrary('Cpp_to_matlab_SHARED.dll', 'calc_sum.h');
+
+is_shared_object_loaded = libisloaded(shared_file_name_without_extension);
+if is_shared_object_loaded==true
+    unloadlibrary(shared_file_name_without_extension);
+end
+
+[notfound, warnings] = loadlibrary(shared_file_name_with_extension, 'calc_sum.h');
 
 num1 = int32(9);
 num2 = int32(7);
-res = calllib('Cpp_to_matlab_SHARED','my_func',num1, num2);
+res = calllib(shared_file_name_without_extension,'my_func',num1, num2);
 fprintf('%d + %d = %d\n',num1, num2, res);
 
-unloadlibrary('Cpp_to_matlab_SHARED');
+unloadlibrary(shared_file_name_without_extension);
+
+
 
 

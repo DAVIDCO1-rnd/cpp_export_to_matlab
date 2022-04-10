@@ -19,12 +19,12 @@ message(${CMAKE_SOURCE_DIR})
 #        DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/matlab/Cpp_to_matlab_SHARED.dll
 	
 
-add_custom_command(TARGET Cpp_to_matlab_SHARED POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy 
-				   ${CMAKE_CURRENT_BINARY_DIR}/Debug/Cpp_to_matlab_SHARED.dll
-				   ${CMAKE_CURRENT_BINARY_DIR}/Debug/Cpp_to_matlab_SHARED.lib
-				   ${CMAKE_SOURCE_DIR}/DLL_folder/Includes/calc_sum.h
-				   ${CMAKE_CURRENT_SOURCE_DIR}/matlab)		
+# add_custom_command(TARGET Cpp_to_matlab_SHARED POST_BUILD
+#                    COMMAND ${CMAKE_COMMAND} -E copy 
+# 				   ${CMAKE_CURRENT_BINARY_DIR}/Debug/Cpp_to_matlab_SHARED.dll
+# 				   ${CMAKE_CURRENT_BINARY_DIR}/Debug/Cpp_to_matlab_SHARED.lib
+# 				   ${CMAKE_SOURCE_DIR}/DLL_folder/Includes/calc_sum.h
+# 				   ${CMAKE_CURRENT_SOURCE_DIR}/matlab)		
 
 
 
